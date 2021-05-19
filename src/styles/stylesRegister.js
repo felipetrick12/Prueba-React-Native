@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
     container: {
          backgroundColor: 'white',
          width:'100%',
-         height: '50%',
+         height: '58%',
          bottom:0,
          position:'absolute',
          borderTopStartRadius:50,
@@ -65,8 +65,8 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
         fontFamily: 'Pattaya-Regular'
     },
-    singup:{
-        alignSelf: 'flex-end',
+    back:{
+        alignSelf: 'flex-start',
         marginTop:5,
         marginRight:20,
         color:'#F64410',
