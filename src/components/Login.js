@@ -5,10 +5,13 @@ import { useForm } from '../hooks/useForm';
 
 const Login = () => {
 
-    const [Form,handleInputChange] = useForm( {
-        email:'duvanli@hotmail.es',
-        password:'felipe123'
-    });
+    const [email, setEmail] = useState('duvanli@hotmail.es');
+    const [contra, setContra] = useState('duva.es');
+
+
+    const onPress = () => {
+       console.log(email,contra)
+    };
 
     return (
         <View style= {styles.container}>
@@ -17,16 +20,21 @@ const Login = () => {
             <SafeAreaView >
             
             <TextInput
+                name="email"
                 style={styles.input}
-                // onChangeText={onChangeText}
-                value={'Email'}
+                defaultValue={email}
+                onChangeText={text => setEmail(text)}
+                placeholder="@alguien.com"
+                placeholderTextColor="gray"
             />
             <TextInput
+                name="password"
                 style={styles.input}
-                // onChangeText={onChangeNumber}
-                value={'Password'}
-                placeholder="useless placeholder"
-                keyboardType="numeric"
+                defaultValue={contra}
+                onChangeText={text2 => setContra(text2)}
+                secureTextEntry={true}
+                placeholder="*******"
+                placeholderTextColor="gray"
             />
             <TouchableOpacity
                 // onPress={ onPress }
@@ -35,8 +43,14 @@ const Login = () => {
             >
                     <Text style={styles.fabText}> Login </Text>
             </TouchableOpacity>
-            
+
+            <TouchableOpacity
+                onPress={ onPress }
+                activeOpacity={ 0.75 }
+            >
                 <Text style={styles.singup}> Sing up?</Text>
+            </TouchableOpacity>
+            
             
             </SafeAreaView>
             </View>

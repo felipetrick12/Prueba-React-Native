@@ -13,7 +13,10 @@ export const useForm = (initialState ={}) => {
             [target.name]: target.value
         })
     }
+    const onPress = () => {
+        console.log(Form)
+    }
 
-    return [Form,handleInputChange,reseTxt];
+    return [Form,handleInputChange,onPress,reseTxt];
     
 }
