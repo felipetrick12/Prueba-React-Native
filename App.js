@@ -9,6 +9,7 @@ import AppRouter from './src/routes/AppRouter';
 import { Text, View } from 'react-native';
 import { styles } from './src/styles/stylesLogin';
 import LottieView from 'lottie-react-native';
+import { login } from './src/store/actions/auth';
 
 
 const Stack = createStackNavigator();
@@ -26,6 +27,7 @@ const App = () => {
       firebase.auth().onAuthStateChanged(async (user) => {
 
           if ( user?.uid ) {
+              dispatch( login( user.uid, user.displayName ) );
               setIsLoggedIn( true );
              
           } else {

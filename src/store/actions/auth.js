@@ -1,7 +1,7 @@
 import { types } from "../../types/types";
 import { firebase } from '../../firebase/firebase-config'
 import { finishLoading, startLoading } from './ui';
-import { Alert } from "react-native";
+import SweetAlert from 'react-native-sweet-alert';
 
 
 export const loginWithEmailPassword= (email,password) => {
@@ -13,7 +13,6 @@ export const loginWithEmailPassword= (email,password) => {
         
         firebase.auth().signInWithEmailAndPassword(email,password)
         .then(({user})=> {
-
             
             dispatch( login(user.uid,user.displayName) )
             dispatch(finishLoading());
@@ -22,7 +21,16 @@ export const loginWithEmailPassword= (email,password) => {
         .catch (err => {
             console.log(err)
             dispatch(finishLoading());
-            Swal.fire('Error',err.message,'error')
+            SweetAlert.showAlertWithOptions({
+                title: 'Error',
+                subTitle: err.message,
+                confirmButtonTitle: 'OK',
+                confirmButtonColor: '#F64410',
+                otherButtonTitle: 'Cancel',
+                otherButtonColor: '#F64410',
+                style: 'error',
+                cancellable: true
+              });
         })
         }, 1000);
         
@@ -45,7 +53,16 @@ export const startWithNamePasswordEmail= (email,password,name) => {
 
         }).catch (err => {
             console.log(err.message);
-            Alert.alert(err.message);
+            SweetAlert.showAlertWithOptions({
+                title: 'Error',
+                subTitle: err.message,
+                confirmButtonTitle: 'OK',
+                confirmButtonColor: '#F64410',
+                otherButtonTitle: 'Cancel',
+                otherButtonColor: '#F64410',
+                style: 'error',
+                cancellable: true
+              });
         } )
     }
 }
@@ -70,7 +87,5 @@ export const startLogout = ()=> {
 }
 
 export const logout = ()=> ({
-
     type: types.logout
-    
 })

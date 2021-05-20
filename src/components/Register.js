@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import validator from 'validator';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/stylesRegister';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 import { RemoveError, setError } from '../store/actions/ui';
-import validator from 'validator';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { startWithNamePasswordEmail } from '../store/actions/auth';
 
 

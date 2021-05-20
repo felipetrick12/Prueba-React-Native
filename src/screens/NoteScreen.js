@@ -1,23 +1,33 @@
 import React from 'react';
-import { ImageBackground, StyleSheet, View } from 'react-native';
-import image from '../assets/muelle.jpeg'
-import Login from '../components/Login';
+import { TouchableOpacity, View } from 'react-native';
+import { styles } from '../styles/stylesNotes';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { useDispatch } from 'react-redux';
+import { startLogout } from '../store/actions/auth';
+
 
 const NoteScreen = () => {
+
+    const dispatch = useDispatch(); 
+
+    const handleLogin = () => {
+        dispatch(startLogout());
+    }
+
     return (
-    <View style= {{ flex:1 ,backgroundColor: '#1CB3FA'}}>
-        <View source={image} style={styles.image}>
-          <Login />
-      </View>
+    <View style={styles.container}>
+        <TouchableOpacity
+                onPress={ handleLogin }
+                activeOpacity={ 0.75 }
+                style={styles.contaierIcon}
+            >
+            <FontAwesome style= {styles.icon} name='sign-out'/> 
+
+        </TouchableOpacity>
     </View>
     );
 }
 
-const styles = StyleSheet.create({
-    image:{ 
-      flex: 1,
-      backgroundColor:'black'
-    }
-})
+
 
 export default NoteScreen;

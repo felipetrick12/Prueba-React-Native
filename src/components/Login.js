@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import validator from 'validator';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/stylesLogin';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginWithEmailPassword } from '../store/actions/auth';
+import { RemoveError, setError } from '../store/actions/ui';
+
 
 
 const Login = () => {
@@ -15,19 +18,46 @@ const Login = () => {
     //HOOKS 
     const navigation = useNavigation();
     const dispatch = useDispatch(); 
+    const {msgError} = useSelector(select=>  select.ui ) 
+
 
     const onPress = () => {
         navigation.navigate('Register')
     };
 
     const handleLogin = () => {
-        dispatch(loginWithEmailPassword(email,password));
+
+        if (FormValid()){
+            dispatch(loginWithEmailPassword(email,password));
+        }
       }
+
+      const FormValid = () => {
+
+         if (!validator.isEmail(email)){
+   
+           dispatch( setError('Email No Valido'));
+           return false;
+         }
+          else if (password.length <=5 )
+         {
+           dispatch( setError('Contraseña con mas de 5 caracteres'));
+           return false;
+         }
+           dispatch(RemoveError());
+           return true;
+         }
 
     return (
         <View style= {styles.container}>
             <View style={ styles.containerLogin}>
             <Text style={styles.title} > Sign In </Text>
+            {
+        
+                (msgError!==null)&&  
+                <Text style={styles.error} > {msgError} </Text>
+
+            }
             <SafeAreaView >
             
                 <View style= {styles.containerInput}>

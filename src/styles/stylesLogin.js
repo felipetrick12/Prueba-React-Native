@@ -77,6 +77,13 @@ export const styles = StyleSheet.create({
        backgroundColor: 'black' ,
        
     },
+    error:{
+        fontSize: 15,
+        alignSelf:'flex-end',
+        fontFamily: 'Pattaya-Regular',
+        right:30,
+        color: '#F64410'
+    },
     cargandoTitle:{
         color: 'white',
         fontSize:40,
