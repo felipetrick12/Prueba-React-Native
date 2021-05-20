@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import AppRouter from './src/routes/AppRouter';
 import 'react-native-gesture-handler';
+import NoteScreen from './src/screens/NoteScreen';
+import LottieView from 'lottie-react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useDispatch } from 'react-redux';
 import { firebase } from './src/firebase/firebase-config'
-import NoteScreen from './src/screens/NoteScreen';
-import AppRouter from './src/routes/AppRouter';
 import { Text, View } from 'react-native';
 import { styles } from './src/styles/stylesLogin';
-import LottieView from 'lottie-react-native';
 import { login } from './src/store/actions/auth';
+
 
 
 const Stack = createStackNavigator();
@@ -55,11 +56,10 @@ const App = () => {
           screenOptions={{
             headerShown: false
           }}
-          mode="modal"
         >
           {
             isLoggedIn === true
-            ? <Stack.Screen name="Notes" component={NoteScreen} />
+            ? <Stack.Screen  style={{flex:1,position:'absolute'}} name="Notes" component={NoteScreen} />
             : <Stack.Screen name="/" component={AppRouter} />
           
           }

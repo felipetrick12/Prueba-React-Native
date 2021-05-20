@@ -3,7 +3,6 @@ import { firebase } from '../../firebase/firebase-config'
 import { finishLoading, startLoading } from './ui';
 import SweetAlert from 'react-native-sweet-alert';
 
-
 export const loginWithEmailPassword= (email,password) => {
 
     return (dispatch)=> {
@@ -12,7 +11,7 @@ export const loginWithEmailPassword= (email,password) => {
         setTimeout(() => {
         
         firebase.auth().signInWithEmailAndPassword(email,password)
-        .then(({user})=> {
+        .then(async ({user})=> {
             
             dispatch( login(user.uid,user.displayName) )
             dispatch(finishLoading());
@@ -81,7 +80,6 @@ export const startLogout = ()=> {
 
     return async (dispatch) => {
         await  firebase.auth().signOut();
-
         dispatch( logout());
     }
 }

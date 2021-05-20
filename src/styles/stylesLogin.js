@@ -70,7 +70,8 @@ export const styles = StyleSheet.create({
         marginTop:5,
         marginRight:20,
         color:'#F64410',
-        textDecorationLine:'underline'
+        textDecorationLine:'underline',
+        fontFamily: 'Pattaya-Regular'
     },
     cargando:{
        flex:1,

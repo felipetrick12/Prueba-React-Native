@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import validator from 'validator';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
-import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { SafeAreaView, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/stylesRegister';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
@@ -65,6 +65,7 @@ const Register = () => {
 
     return (
         <View style= {styles.container}>
+            <ScrollView style={[{flex: 1}]}>  
             <View style={ styles.containerLogin}>
             <Text style={styles.title} > Sign Up </Text>
             {
@@ -129,6 +130,7 @@ const Register = () => {
             
             </SafeAreaView>
             </View>
+         </ScrollView>
         </View>
     );
 }

@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 import { color } from 'react-native-reanimated';
 
 export const styles = StyleSheet.create({
-    container2: {
+    container: {
         width:'100%',
         flexDirection:'row',
         justifyContent:'space-between',

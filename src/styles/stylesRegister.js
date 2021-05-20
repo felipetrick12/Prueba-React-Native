@@ -75,6 +75,7 @@ export const styles = StyleSheet.create({
     back:{
         alignSelf: 'flex-start',
         marginTop:5,
+        fontFamily: 'Pattaya-Regular',
         marginRight:20,
         color:'#F64410',
         textDecorationLine:'underline'
