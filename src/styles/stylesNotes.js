@@ -2,13 +2,11 @@ import {StyleSheet} from 'react-native';
 
 export const styles = StyleSheet.create({
     container: {
-         backgroundColor: 'white',
-         width:'100%',
-         height: '50%',
-         bottom:0,
-         position:'absolute',
-         borderTopStartRadius:50,
-         borderTopEndRadius:50
+        width:100,
+        height:100,
+        backgroundColor: 'black',
+        fontSize:40      ,
+        alignSelf:'center'   
     },
     containerLogin: {
          width:'80%',
@@ -71,17 +69,5 @@ export const styles = StyleSheet.create({
         marginRight:20,
         color:'#F64410',
         textDecorationLine:'underline'
-    },
-    cargando:{
-       flex:1,
-       backgroundColor: 'black' ,
-       
-    },
-    cargandoTitle:{
-        color: 'white',
-        fontSize:40,
-        fontFamily: 'Pattaya-Regular',
-        textAlign: 'center',
-        paddingVertical: '50%'
     }
 });

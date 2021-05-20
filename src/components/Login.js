@@ -4,6 +4,7 @@ import { styles } from '../styles/stylesLogin';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
+import { loginWithEmailPassword } from '../store/actions/auth';
 
 
 const Login = () => {

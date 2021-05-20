@@ -1,19 +1,53 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import 'react-native-gesture-handler';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import { LoginScreen } from './src/screens/LoginScreen';
-import { Provider } from 'react-redux';
-import { store } from './src/store/store';
-import { connect } from 'react-redux';
-import { RegisterScreen } from './src/screens/RegisterScreen';
-import { horizontalAnimation } from './src/rules/transition';
+import { useDispatch } from 'react-redux';
+import { firebase } from './src/firebase/firebase-config'
+import NoteScreen from './src/screens/NoteScreen';
+import AppRouter from './src/routes/AppRouter';
+import { Text, View } from 'react-native';
+import { styles } from './src/styles/stylesLogin';
+import LottieView from 'lottie-react-native';
+
 
 const Stack = createStackNavigator();
 
-const App = (props) => {
+const App = () => {
+  const dispatch = useDispatch();
+
+  const [ checking, setChecking ] = useState(true);
+  const [ isLoggedIn, setIsLoggedIn ] = useState(false);
+
+
+
+  useEffect(() => {
+      
+      firebase.auth().onAuthStateChanged(async (user) => {
+
+          if ( user?.uid ) {
+              setIsLoggedIn( true );
+             
+          } else {
+              setIsLoggedIn( false );
+          }
+          
+          setChecking(false);
+
+      });
+      
+  }, [ setChecking, setIsLoggedIn ])
+
+  if (checking) {
+    return(
+    <View style={styles.cargando}>
+      <Text style={styles.cargandoTitle}>..Cargando..</Text>
+      <LottieView source={require('./src/assets/9844-loading-40-paperplane.json')} autoPlay loop />
+      </View>
+    )
+  }
+
   return (
-    <Provider store={store}>
       <NavigationContainer>
         <Stack.Navigator
           screenOptions={{
@@ -21,13 +55,15 @@ const App = (props) => {
           }}
           mode="modal"
         >
+          {
+            isLoggedIn === true
+            ? <Stack.Screen name="Notes" component={NoteScreen} />
+            : <Stack.Screen name="/" component={AppRouter} />
           
-          <Stack.Screen name="Home" component={LoginScreen} />
-          <Stack.Screen name="Register" component={RegisterScreen} options={horizontalAnimation} />
-
+          }
+          
         </Stack.Navigator>
       </NavigationContainer>
-    </Provider>
   );
 }
 
