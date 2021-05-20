@@ -1,34 +1,86 @@
 import React, { useState } from 'react';
 import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { styles } from '../styles/stylesRegister';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch, useSelector } from 'react-redux';
+import { RemoveError, setError } from '../store/actions/ui';
+import validator from 'validator';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import { startWithNamePasswordEmail } from '../store/actions/auth';
+
+
 
 
 const Register = () => {
 
-    const [nombre, setNombre] = useState('duvan');
+    //STATE
+    const [name, setNombre] = useState('duvan');
     const [email, setEmail] = useState('duvanli@hotmail.es');
-    const [contra, setContra] = useState('duva.es');
+    const [password, setContra] = useState('duva.es');
+
+    //HOOKS
     const navigation = useNavigation();
+    const {msgError} =useSelector(select=>  select.ui ) 
+    const dispatch = useDispatch(); 
 
 
+    //FUNCTIONS
     const onPress = () => {
         navigation.goBack();
     };
+
+    const handleSubmit = () => {
+
+        console.log(msgError)
+
+        if (FormValid()){
+
+            dispatch(startWithNamePasswordEmail( email, password, name));
+            console.log('Formulario Correcto')
+      
+          }
+    }
+
+    const FormValid = () => {
+
+     if(name.trim().length===0)
+        {
+         dispatch( setError('Ingrese un nombre'));
+         return false
+       }
+       else if (!validator.isEmail(email)){
+
+        dispatch( setError('Email No Valido'));
+        return false;
+      }
+       else if (password.length <=5 )
+      {
+        dispatch( setError('Contraseña con mas de 5 caracteres'));
+        return false;
+      }
+        dispatch(RemoveError());
+        return true;
+      }
+
 
     return (
         <View style= {styles.container}>
             <View style={ styles.containerLogin}>
             <Text style={styles.title} > Sign Up </Text>
-            <SafeAreaView >
+            {
+        
+                (msgError!==null)&&  
+                <Text style={styles.error} > {msgError} </Text>
+
+            }
+            <SafeAreaView  >
             
             <View style= {styles.containerInput}>
                     <FontAwesome style= {styles.icon} name='user'/> 
                     <TextInput
                         name="Nombre"
                         style={styles.input}
-                        defaultValue={nombre}
+                        defaultValue={name}
                         onChangeText={text => setNombre(text)}
                         placeholder="@alguien.com"
                         placeholderTextColor="gray"
@@ -52,16 +104,16 @@ const Register = () => {
                     <TextInput
                             name="password"
                             style={styles.input}
-                            defaultValue={contra}
+                            defaultValue={password}
                             onChangeText={text3 => setContra(text3)}
                             secureTextEntry={true}
                             placeholder="*******"
                             placeholderTextColor="gray"
                     />
                 </View>
-                    
+        
             <TouchableOpacity
-                // onPress={ onPress }
+                onPress={ handleSubmit }
                 activeOpacity={ 0.75 }
                 style={styles.fabLocation}
             >

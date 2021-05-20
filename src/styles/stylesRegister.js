@@ -23,6 +23,13 @@ export const styles = StyleSheet.create({
         paddingLeft:10,
         fontFamily: 'Pattaya-Regular'
     },
+    error:{
+        fontSize: 15,
+        alignSelf:'flex-end',
+        fontFamily: 'Pattaya-Regular',
+        right:30,
+        color: '#F64410'
+    },
     icon: {
         position:'absolute',
         marginTop:23,

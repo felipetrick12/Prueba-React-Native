@@ -1,10 +1,21 @@
-const initialstate= {
-    contact:[]
+import {types} from '../../types/types'
+
+
+export const authReducer = ( state={},action) => {
+
+    switch (action.type) {
+
+        case types.login:
+            return {
+                uid: action.payload.uid,
+                name:action.payload.displayName
+            }
+        case types.logout:
+            return {}
+    
+    default:
+      return state;
+           
+    }
+
 }
-
-export const authReducer = ( state= initialstate,action) => {
-
-        return state;
-        
-}
-

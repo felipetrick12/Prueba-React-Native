@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { LoginScreen } from './src/screens/LoginScreen';
 import { Provider } from 'react-redux';
-import { store } from './src/store/store'
+import { store } from './src/store/store';
 import { connect } from 'react-redux';
 import { RegisterScreen } from './src/screens/RegisterScreen';
 import { horizontalAnimation } from './src/rules/transition';
@@ -21,6 +21,7 @@ const App = (props) => {
           }}
           mode="modal"
         >
+          
           <Stack.Screen name="Home" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} options={horizontalAnimation} />
 

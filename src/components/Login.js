@@ -3,17 +3,25 @@ import { SafeAreaView, Text, TextInput, TouchableOpacity, View } from 'react-nat
 import { styles } from '../styles/stylesLogin';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
 
 
 const Login = () => {
 
     const [email, setEmail] = useState('duvanli@hotmail.es');
-    const [contra, setContra] = useState('duva.es');
+    const [password, setContra] = useState('duva.es');
+    
+    //HOOKS 
     const navigation = useNavigation();
+    const dispatch = useDispatch(); 
 
     const onPress = () => {
         navigation.navigate('Register')
     };
+
+    const handleLogin = () => {
+        dispatch(loginWithEmailPassword(email,password));
+      }
 
     return (
         <View style= {styles.container}>
@@ -38,7 +46,7 @@ const Login = () => {
                     <TextInput
                             name="password"
                             style={styles.input}
-                            defaultValue={contra}
+                            defaultValue={password}
                             onChangeText={text2 => setContra(text2)}
                             secureTextEntry={true}
                             placeholder="*******"
@@ -47,7 +55,7 @@ const Login = () => {
                 </View>
                     
             <TouchableOpacity
-                // onPress={ onPress }
+                onPress={ handleLogin }
                 activeOpacity={ 0.75 }
                 style={styles.fabLocation}
             >
