@@ -1,22 +1,23 @@
 import {StyleSheet} from 'react-native';
-import { color } from 'react-native-reanimated';
 
 export const styles = StyleSheet.create({
-    container: {
+    container2: {
         width:'100%',
-        flexDirection:'row',
-        justifyContent:'space-between',
-        backgroundColor:'black'
+        backgroundColor:'black',
+        alignItems:'center',
+        borderTopRightRadius:20
     },
     icon: {
-        padding:10,
-        fontSize:40,
+        paddingTop: 40,
+        fontSize:60,
         color:'#F64410',
     },
-    icon2:{
+    icon1:{
+        position:'absolute',
+        alignSelf:'flex-end',
         padding:10,
-        fontSize:40,
-        color:'#F64410',
+        fontSize:20,
+        color:'white',
     },
     text: {
         textAlign:'center',
@@ -31,11 +32,11 @@ export const styles = StyleSheet.create({
         backgroundColor: 'black' ,
         
      },
-     cargandoTitle:{
+     Title:{
          color: 'white',
-         fontSize:40,
+         fontSize:20,
          fontFamily: 'Pattaya-Regular',
          textAlign: 'center',
-         paddingVertical: '50%'
+         paddingTop: 10
      }
 });

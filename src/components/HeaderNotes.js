@@ -1,10 +1,10 @@
 import React from 'react';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import LottieView from 'lottie-react-native';
 import { Text, View } from 'react-native';
 import { styles } from '../styles/stylesNotes';
-import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { useDispatch, useSelector } from 'react-redux';
 import { startLogout } from '../store/actions/auth';
-import LottieView from 'lottie-react-native';
 
 
 

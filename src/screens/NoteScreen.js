@@ -1,9 +1,10 @@
 import React from 'react';
-import HeaderNotes from '../components/HeaderNotes';
+import SideBar from '../components/SideBar';
+// import HeaderNotes from '../components/HeaderNotes';
 
 const NoteScreen = () => {
     return (
-        <HeaderNotes />
+        <SideBar />
     );
 }
 
