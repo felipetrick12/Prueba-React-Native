@@ -14,9 +14,9 @@ import { startWithNamePasswordEmail } from '../store/actions/auth';
 const Register = () => {
 
     //STATE
-    const [name, setNombre] = useState('duvan');
-    const [email, setEmail] = useState('duvanli@hotmail.es');
-    const [password, setContra] = useState('duva.es');
+    const [name, setNombre] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setContra] = useState('');
 
     //HOOKS
     const navigation = useNavigation();

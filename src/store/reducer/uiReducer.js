@@ -2,7 +2,8 @@ import { types } from "../../types/types";
 
 const initialState ={
     loading: false,
-    msgError:null
+    msgError:null,
+    select: null
 }
 
 
@@ -30,6 +31,17 @@ export const uiReducer =(state = initialState,action)=> {
                     ...state,
                     loading:false
                 }
+        case types.uiSelectMenu:
+            return {
+                ...state,
+                select:true
+            }
+        case types.uiEndMenu:
+            return {
+                    ...state,
+                    select:false
+            }
+            
     
         default:
             return state;

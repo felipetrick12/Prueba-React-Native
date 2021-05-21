@@ -29,7 +29,6 @@ export const styles = StyleSheet.create({
     cargando:{
         flex:1,
         backgroundColor: 'black' ,
-        
      },
      cargandoTitle:{
          color: 'white',
@@ -37,5 +36,24 @@ export const styles = StyleSheet.create({
          fontFamily: 'Pattaya-Regular',
          textAlign: 'center',
          paddingVertical: '50%'
-     }
+     },
+    cargandoNotes: {
+        flex:1,
+        flexDirection:'row',
+        backgroundColor: 'black' ,
+        justifyContent: 'center'
+    },
+    input:{
+        color: 'white',
+        backgroundColor:'black',
+        width:'80%',
+        height:'80%',
+        fontSize:40,
+        overflow:'hidden',
+        margin:0,
+        top:20,
+        padding:0,
+        fontFamily: 'Pattaya-Regular',
+        textAlign: 'center',
+    }
 });

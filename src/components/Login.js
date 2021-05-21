@@ -12,8 +12,8 @@ import { RemoveError, setError } from '../store/actions/ui';
 
 const Login = () => {
 
-    const [email, setEmail] = useState('duvanli@hotmail.es');
-    const [password, setContra] = useState('duva.es');
+    const [email, setEmail] = useState('');
+    const [password, setContra] = useState('');
     
     //HOOKS 
     const navigation = useNavigation();

@@ -20,3 +20,11 @@ export const finishLoading = () => ({
     type: types.uiFinishLoading
 });
 
+export const startMenu = () => ({
+    type: types.uiSelectMenu
+});
+
+export const endMenu = () => ({
+    type: types.uiEndMenu
+});
+
