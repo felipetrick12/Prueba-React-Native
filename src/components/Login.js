@@ -39,11 +39,7 @@ const Login = () => {
            dispatch( setError('Email No Valido'));
            return false;
          }
-          else if (password.length <=5 )
-         {
-           dispatch( setError('Contraseña con mas de 5 caracteres'));
-           return false;
-         }
+    
            dispatch(RemoveError());
            return true;
          }
